@@ -7,6 +7,7 @@ import './App.css'
 import Header from './Components/Header'
 import ArticlesListView from './Views/ArticlesListView'
 import HomeView from './Views/HomeView'
+import ArticleView from './Views/ArticleView'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeView />}/>
         <Route path="/articles" element={<ArticlesListView />}/>
+        <Route path="/articles/:id" element={<ArticleView/>}/>
       </Routes>
     </>
   )
