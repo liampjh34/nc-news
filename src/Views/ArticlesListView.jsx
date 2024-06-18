@@ -1,11 +1,15 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import ArticlesList from '../Components/ArticlesList'
+import { getArticles } from '../__utils__/api'
 
 
 export default function ArticlesListView() {
-    const path = 'https://nc-news-w53u.onrender.com/api/articles'
+    
     const [articles, setArticles] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    console.log(isLoading)
+
     const dateConfig = {
         year: '2-digit',
         month: 'long',
@@ -15,9 +19,14 @@ export default function ArticlesListView() {
     const todaysDate = new Date().toLocaleDateString(undefined, dateConfig)
 
     useEffect(() => {
-        axios.get(path)
+        setIsLoading(true)
+        getArticles()
         .then((response) => {
-            setArticles(response.data.articles)
+            setArticles(response)
+            setIsLoading(false)
+        })
+        .catch((error) => {
+            console.log(error)
         })
     }, [])
 
