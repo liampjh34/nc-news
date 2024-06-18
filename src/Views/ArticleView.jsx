@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getArticle } from "../__utils__/api"
+import { getArticle, getArticleComments } from "../__utils__/api"
+import CommentsView from "./CommentsView"
 
 export default function ArticleView() {
     const { id } = useParams()
     const [article, setArticle] = useState({})
-    const [isLoading, setIsLoading] = useState(false)
+    const [articleLoading, setArticleLoading] = useState(false)
 
     useEffect(() => {
-        setIsLoading(true)
+        setArticleLoading(true)
         getArticle(id)
         .then(({article}) => {
-            setIsLoading(false)
+            setArticleLoading(false)
             setArticle(article)
         })
     }, [])
@@ -20,8 +21,12 @@ export default function ArticleView() {
         <h1>{article.title}</h1>
         <h6>by {article.author}</h6>
         <p>{article.votes} votes, {article.comment_count} comments</p>
-        <img src={article.article_img_url}></img>
+        <img 
+            src={article.article_img_url} 
+            alt='promo image'
+            id="articleHeroImage"></img>
         <div>{article.topic}</div>
         <article>{article.body}</article>
+        <CommentsView articleId={id}/>
     </>
 }
