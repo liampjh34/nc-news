@@ -11,7 +11,7 @@ export default function Promo({ id, title, img, timestamp, comments, votes }) {
     const path = `/articles/${id}`
     
     return <>
-        <img src={img} />
+        <img src={img} alt='promo image'/>
         <Link to={path}><h4>{title}</h4></Link>
         <p>{formattedTimestamp}</p>
         <p>{comments} comments</p>

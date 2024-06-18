@@ -15,3 +15,11 @@ export const getArticle = (id) => {
         return response.data
     })
 }
+
+export const getArticleComments = (id) => {
+    const path = `https://nc-news-w53u.onrender.com/api/articles/${id}/comments`
+    return axios.get(path)
+    .then((response) => {
+        return response.data.comments
+    })
+}

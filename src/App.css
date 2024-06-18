@@ -52,3 +52,12 @@ li {
 .header {
   background-color: #7DA9C2;
 }
+
+.comment {
+  margin: 2vh 2vw 2vh 2vw;
+  border-top: 1px solid #7D87C2;
+}
+
+#articleHeroImage {
+  max-width: 90vw;
+}
