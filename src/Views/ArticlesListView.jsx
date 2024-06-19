@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import ArticlesList from '../Components/ArticlesList'
 import { getArticles } from '../__utils__/api'
@@ -7,8 +6,7 @@ import { getArticles } from '../__utils__/api'
 export default function ArticlesListView() {
     
     const [articles, setArticles] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    console.log(isLoading)
+    const [articlesLoading, setArticlesLoading] = useState(false)
 
     const dateConfig = {
         year: '2-digit',
@@ -19,11 +17,11 @@ export default function ArticlesListView() {
     const todaysDate = new Date().toLocaleDateString(undefined, dateConfig)
 
     useEffect(() => {
-        setIsLoading(true)
+        setArticlesLoading(true)
         getArticles()
         .then((response) => {
             setArticles(response)
-            setIsLoading(false)
+            setArticlesLoading(false)
         })
         .catch((error) => {
             console.log(error)

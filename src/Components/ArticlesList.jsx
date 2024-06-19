@@ -1,7 +1,6 @@
 import Promo from "./Promo"
 
 export default function ArticlesList({ articles }) {
-    console.log(articles)
     return <ul>
         {articles.map((article) => {
             return <li className='promo' key={article.article_id}>
