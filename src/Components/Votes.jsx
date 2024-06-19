@@ -19,7 +19,9 @@ export default function Votes({ id, passedVotes }) {
         setVotesLoading(true)
         setUserVoted(true)
         setUserAction('add')
-        setVotes(passedVotes+1)
+        setVotes((votes) => {
+            {return votes === 0 ? passedVotes + 1 : votes + 1}
+        })
         voteForArticle(id, 1)
         .then((response) => {})
         .catch((error) => {
@@ -32,7 +34,9 @@ export default function Votes({ id, passedVotes }) {
         setVotesLoading(true)
         setUserVoted(true)
         setUserAction('minus')
-        setVotes(passedVotes-1)
+        setVotes((votes) => {
+            {return votes === 0 ? passedVotes - 1 : votes - 1}
+        })
         voteForArticle(id, -1)
         .then((response) => {})
         .catch((error) => {
