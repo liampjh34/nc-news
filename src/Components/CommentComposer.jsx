@@ -11,15 +11,12 @@ export default function CommentComposer({ articleId, comments, setComments }) {
     const [commentLoading, setCommentLoading] = useState(true)
     const [error, setError] = useState(Error())
     const user = useContext(UserContext)
-    console.log(`formValid is ${formValid} inside the component`)
-    console.log(`submitAttempted is ${submitAttempted}`)
 
     useEffect(() => {
         
     }, [formValid, submitAttempted])
 
     const validateForm = () => {
-        console.log(` formValid ${formValid} at the start of validateForm()`)
         if (comment.trim() === '') {
             setFormValid(false)
             return false
@@ -33,11 +30,11 @@ export default function CommentComposer({ articleId, comments, setComments }) {
     }
 
     const handleSubmit = (event) => {
-        console.log(`'${comment}' submitted`)
         event.preventDefault()
         setCommentLoading(true)
         setSubmitAttempted(true)
         if (!validateForm()) {
+            setCommentLoading(false)
             return
         }
         
@@ -48,14 +45,14 @@ export default function CommentComposer({ articleId, comments, setComments }) {
             votes: 0
         }, ...comments])
         setComment('')
-        // postComment(user, comment, articleId)
-        // .then((response) => {
-        //     setCommentLoading(false)
-        // })
-        // .catch((error) => {
-        //     setError(error)
-        //     setCommentLoading(false)
-        // })
+        postComment(user, comment, articleId)
+        .then((response) => {
+            setCommentLoading(false)
+        })
+        .catch((error) => {
+            setError(error)
+            setCommentLoading(false)
+        })
     }
 
     return <form>
