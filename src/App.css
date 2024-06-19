@@ -78,3 +78,7 @@ li {
   padding: 1vh 1vw 1vh 1vw;
   margin: 1vh 1vw 1vh 1vw;
 }
+
+.invalidInput {
+  border: 1px solid red;
+}
