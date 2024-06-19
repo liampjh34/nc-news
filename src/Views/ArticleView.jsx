@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getArticle, getArticleComments } from "../__utils__/api"
+import { getArticle} from "../__utils__/api"
 import CommentsView from "./CommentsView"
+import Votes from "../Components/Votes"
+import 'animate.css'
 
 export default function ArticleView() {
     const { id } = useParams()
@@ -20,13 +22,13 @@ export default function ArticleView() {
     return <>
         <h1>{article.title}</h1>
         <h6>by {article.author}</h6>
-        <p>{article.votes} votes, {article.comment_count} comments</p>
         <img 
             src={article.article_img_url} 
             alt='promo image'
             id="articleHeroImage"></img>
         <div>{article.topic}</div>
         <article>{article.body}</article>
+        <Votes id={id} passedVotes={article.votes}/>
         <CommentsView articleId={id}/>
     </>
 }

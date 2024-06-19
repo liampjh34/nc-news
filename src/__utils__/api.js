@@ -1,25 +1,41 @@
 import axios from 'axios'
 
+const request = axios.create({
+    baseURL: `https://nc-news-w53u.onrender.com/api`
+})
+
 export const getArticles = () => {
-    const path = 'https://nc-news-w53u.onrender.com/api/articles'
-    return axios.get(path)
+    const path = '/articles'
+    return request.get(path)
         .then((response) => {
             return response.data.articles
         })
 }
 
 export const getArticle = (id) => {
-    const path = `https://nc-news-w53u.onrender.com/api/articles/${id}`
-    return axios.get(path)
+    const path = `/articles/${id}`
+    return request.get(path)
     .then((response) => {
         return response.data
     })
 }
 
 export const getArticleComments = (id) => {
-    const path = `https://nc-news-w53u.onrender.com/api/articles/${id}/comments`
-    return axios.get(path)
+    const path = `/articles/${id}/comments`
+    return request.get(path)
     .then((response) => {
         return response.data.comments
     })
 }
+
+export const voteForArticle = (id, numVotes) => {
+    const path = `/articles/${id}`
+    const voteChange = {
+        inc_votes: numVotes
+    }
+
+    return request.patch(path, voteChange)
+    .then((response) => {
+        return response.data
+    })
+    }

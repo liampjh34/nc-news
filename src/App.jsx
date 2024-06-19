@@ -4,6 +4,7 @@ import {
   Route
 } from 'react-router-dom'
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Header'
 import ArticlesListView from './Views/ArticlesListView'
 import HomeView from './Views/HomeView'
