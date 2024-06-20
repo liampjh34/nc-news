@@ -21,7 +21,7 @@ function App() {
         <Route path="/articles" element={<ArticlesListView />}/>
         <Route path="/articles/:id" element={<ArticleView/>}/>
         <Route path="/topics" element={<TopicsView/>}/>
-        <Route path="/topics/:slug" element={<ArticlesByTopicView/>}/>
+        <Route path="/topics/:slug" element={<ArticlesListView/>}/>
       </Routes>
   
   </UserContext.Provider>
