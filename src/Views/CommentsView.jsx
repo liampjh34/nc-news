@@ -1,25 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import CommentsList from "../Components/CommentsList";
-import { getArticleComments } from "../__utils__/api";
+import CommentComposer from "../Components/CommentComposer";
 
 export default function CommentsView({ articleId }) {
 
     const [comments, setComments] = useState([])
-    const [commentsLoading, setCommentsLoading] = useState(false)
 
-    useEffect(() => {
-        setCommentsLoading(true)
-        getArticleComments(articleId)
-        .then((response) => {
-            setCommentsLoading(false)
-            setComments(response)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-    }, [])
+    useEffect(() => {}, [comments])
 
     return <>
-        <CommentsList comments={comments}/>
+        <h1>Comments</h1>
+        <CommentComposer articleId={ articleId } comments={comments} setComments={setComments}/>
+        <CommentsList setComments={setComments} comments={comments} articleId={articleId}/>
     </>
 }

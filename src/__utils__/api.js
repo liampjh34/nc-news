@@ -38,4 +38,16 @@ export const voteForArticle = (id, numVotes) => {
     .then((response) => {
         return response.data
     })
+}
+
+export const postComment = (user, comment, articleId) => {
+    const path = `/articles/${articleId}/comments`
+    const input = {
+        "username": user,
+        "body": comment
     }
+    return request.post(path, input)
+    .then((response) => {
+        return response.data
+    })
+}
