@@ -13,3 +13,4 @@ This repo is a work in progress, and will provide the frontend to ![Link to the 
 ## Bugs to fix
 
 - [] If user votes for an article, they can only undo their vote and cannot then vote the other way.
+- [] Optimistic rendering of newly posted comments is not reversed, if posting the comment errors.

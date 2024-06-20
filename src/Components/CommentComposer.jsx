@@ -8,7 +8,7 @@ export default function CommentComposer({ articleId, comments, setComments }) {
     const [comment, setComment] = useState('')
     const [formValid, setFormValid] = useState(false)
     const [submitAttempted, setSubmitAttempted] = useState(false)
-    const [commentLoading, setCommentLoading] = useState(true)
+    const [commentLoading, setCommentLoading] = useState(false)
     const [error, setError] = useState(Error())
     const user = useContext(UserContext)
 
@@ -33,18 +33,23 @@ export default function CommentComposer({ articleId, comments, setComments }) {
         event.preventDefault()
         setCommentLoading(true)
         setSubmitAttempted(true)
+        
         if (!validateForm()) {
             setCommentLoading(false)
             return
         }
+
+        const temporaryKey = `temporaryKey${Date.now()}`
         
         setComments([{
-            comment_id: 'temporaryKey',
+            comment_id: temporaryKey,
             author: user,
             body: comment,
             votes: 0
         }, ...comments])
+
         setComment('')
+        
         postComment(user, comment, articleId)
         .then((response) => {
             setCommentLoading(false)
@@ -52,6 +57,12 @@ export default function CommentComposer({ articleId, comments, setComments }) {
         .catch((error) => {
             setError(error)
             setCommentLoading(false)
+            setComments((comments) => {
+                const originalComments = comments.filter((comment) => {
+                    return comment.comment_id !== temporaryKey
+                })
+                return originalComments
+            })
         })
     }
 

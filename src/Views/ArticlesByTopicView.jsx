@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
-import ArticlesList from '../Components/ArticlesList'
-import { getArticles } from '../__utils__/api'
+import { useEffect, useState } from "react";
+import { getArticlesByTopic } from "../__utils__/api";
+import { useParams } from "react-router-dom";
+import ArticlesList from "../Components/ArticlesList";
 
+export default function ArticlesByTopicView() {
 
-export default function ArticlesListView() {
-    
+    const { slug } = useParams()
+
     const [articles, setArticles] = useState([])
     const [articlesLoading, setArticlesLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -19,19 +21,20 @@ export default function ArticlesListView() {
 
     useEffect(() => {
         setArticlesLoading(true)
-        getArticles()
-        .then((response) => {
-            setArticles(response)
+        getArticlesByTopic(slug)
+        .then(({ articles }) => {
+            setArticles(articles)
             setArticlesLoading(false)
         })
         .catch((error) => {
             setArticlesLoading(false)
             setError({ error })
         })
-    }, [])
+    })
 
     return <>
         <h2>{todaysDate}</h2>
         <ArticlesList articles={articles}/>
     </>
+
 }

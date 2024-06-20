@@ -90,3 +90,13 @@ li {
   color: white;
   font-weight: bold;
 }
+
+.topic-card {
+  border: 1px solid black;
+  max-width: 40vw;
+  padding: 1vh 1vw 1vh 1vw;
+  margin: 1vh 1vw 1vh 1vw;
+  background-color: #7DC2B9;
+  color: white;
+  font-weight: bold;
+}
