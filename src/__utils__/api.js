@@ -4,11 +4,19 @@ const request = axios.create({
     baseURL: `https://nc-news-w53u.onrender.com/api`
 })
 
-export const getArticles = () => {
+export const getArticles = (topic=undefined, params) => {
     const path = '/articles'
-    return request.get(path)
+    const requestParams = { params: {
+        'topic': topic,
+        sort_by: params.sortBy,
+        order: params.orderBy
+    } }
+    return request.get(path, requestParams)
         .then((response) => {
             return response.data.articles
+        })
+        .catch((error) => {
+            console.log(error)
         })
 }
 

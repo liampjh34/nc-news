@@ -1,25 +1,21 @@
 import { useEffect, useState } from 'react'
 import ArticlesList from '../Components/ArticlesList'
 import { getArticles } from '../__utils__/api'
+import ListHeader from '../Components/ListHeader'
+import { useParams } from 'react-router-dom'
 
 
 export default function ArticlesListView() {
-    
+
+    const { slug } = useParams()
     const [articles, setArticles] = useState([])
     const [articlesLoading, setArticlesLoading] = useState(false)
     const [error, setError] = useState(null)
-
-    const dateConfig = {
-        year: '2-digit',
-        month: 'long',
-        day: '2-digit'
-    }
-    
-    const todaysDate = new Date().toLocaleDateString(undefined, dateConfig)
+    const [params, setParams] = useState({})
 
     useEffect(() => {
         setArticlesLoading(true)
-        getArticles()
+        getArticles(slug, params)
         .then((response) => {
             setArticles(response)
             setArticlesLoading(false)
@@ -28,10 +24,10 @@ export default function ArticlesListView() {
             setArticlesLoading(false)
             setError({ error })
         })
-    }, [])
+    }, [params, slug])
 
     return <>
-        <h2>{todaysDate}</h2>
+        <ListHeader setParams={setParams}/>
         <ArticlesList articles={articles}/>
     </>
 }
