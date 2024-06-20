@@ -6,6 +6,7 @@ export default function Header() {
         <img src="./icons/list.svg" aria-label="Menu"></img>
         <ul>
             <Link to="/articles">Articles</Link>
+            <Link to="/topics">Topics</Link>
         </ul>
     </div>
 }

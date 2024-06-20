@@ -12,6 +12,13 @@ export const getArticles = () => {
         })
 }
 
+export const getArticlesByTopic = (slug) => {
+    const path = `/articles/?topic=${slug}`
+    return request.get(path)
+    .then((response) => {
+        return response.data
+    })
+}
 export const getArticle = (id) => {
     const path = `/articles/${id}`
     return request.get(path)
@@ -19,6 +26,7 @@ export const getArticle = (id) => {
         return response.data
     })
 }
+
 
 export const getArticleComments = (id) => {
     const path = `/articles/${id}/comments`
@@ -55,6 +63,14 @@ export const postComment = (user, comment, articleId) => {
 export const deleteComment = (commentId) => {
     const path = `/comments/${commentId}`
     return request.delete(path)
+    .then((response) => {
+        return response.data
+    })
+}
+
+export const getTopics = () => {
+    const path = '/topics'
+    return request.get(path)
     .then((response) => {
         return response.data
     })

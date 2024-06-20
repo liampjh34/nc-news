@@ -14,7 +14,7 @@ export default function Comment({ comment, id }) {
         .then((response) => {})
         .catch((error) => {
             setCommentVisible(true)
-            setError({ err })
+            setError({ error })
         })
     }
 

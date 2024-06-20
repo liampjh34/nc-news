@@ -11,6 +11,7 @@ export default function CommentComposer({ articleId, comments, setComments }) {
     const [commentLoading, setCommentLoading] = useState(true)
     const [error, setError] = useState(Error())
     const user = useContext(UserContext)
+    console.log(comments)
 
     useEffect(() => {
         
@@ -33,13 +34,16 @@ export default function CommentComposer({ articleId, comments, setComments }) {
         event.preventDefault()
         setCommentLoading(true)
         setSubmitAttempted(true)
+        
         if (!validateForm()) {
             setCommentLoading(false)
             return
         }
+
+        const temporaryKey = `temporaryKey${Date.now()}`
         
         setComments([{
-            comment_id: 'temporaryKey',
+            comment_id: temporaryKey,
             author: user,
             body: comment,
             votes: 0
