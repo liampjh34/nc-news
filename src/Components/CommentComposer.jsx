@@ -8,10 +8,9 @@ export default function CommentComposer({ articleId, comments, setComments }) {
     const [comment, setComment] = useState('')
     const [formValid, setFormValid] = useState(false)
     const [submitAttempted, setSubmitAttempted] = useState(false)
-    const [commentLoading, setCommentLoading] = useState(true)
+    const [commentLoading, setCommentLoading] = useState(false)
     const [error, setError] = useState(Error())
     const user = useContext(UserContext)
-    console.log(comments)
 
     useEffect(() => {
         
@@ -48,7 +47,9 @@ export default function CommentComposer({ articleId, comments, setComments }) {
             body: comment,
             votes: 0
         }, ...comments])
+
         setComment('')
+        
         postComment(user, comment, articleId)
         .then((response) => {
             setCommentLoading(false)
@@ -56,6 +57,12 @@ export default function CommentComposer({ articleId, comments, setComments }) {
         .catch((error) => {
             setError(error)
             setCommentLoading(false)
+            setComments((comments) => {
+                const originalComments = comments.filter((comment) => {
+                    return comment.comment_id !== temporaryKey
+                })
+                return originalComments
+            })
         })
     }
 
