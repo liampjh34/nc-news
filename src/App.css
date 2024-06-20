@@ -77,8 +77,16 @@ li {
   color: white;
   padding: 1vh 1vw 1vh 1vw;
   margin: 1vh 1vw 1vh 1vw;
+  font-weight: bold;
 }
 
 .invalidInput {
   border: 1px solid red;
+}
+
+.delete-button {
+  background-color: #C2967D;
+  padding: 1vh 1vw 1vh 1vw;
+  color: white;
+  font-weight: bold;
 }

@@ -21,10 +21,8 @@ export default function CommentsList({ setComments, comments, articleId }) {
 
     return <ul>
         {comments.map((comment) => {
-           return <li 
-            key={comment.comment_id}
-            className="comment">
-               <Comment comment={comment}/>
+           return <li key={comment.comment_id}>
+               <Comment comment={comment} id={comment.comment_id}/>
            </li> 
         })}
     </ul>
