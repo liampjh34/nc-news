@@ -51,3 +51,11 @@ export const postComment = (user, comment, articleId) => {
         return response.data
     })
 }
+
+export const deleteComment = (commentId) => {
+    const path = `/comments/${commentId}`
+    return request.delete(path)
+    .then((response) => {
+        return response.data
+    })
+}
