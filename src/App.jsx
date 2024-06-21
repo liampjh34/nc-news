@@ -1,5 +1,6 @@
 import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
+import './scss/Custom.scss'
 import { useContext, useState } from 'react'
 import { UserContext } from './Contexts/Contexts'
 import { Routes, Route } from 'react-router-dom'

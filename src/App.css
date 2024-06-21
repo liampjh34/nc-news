@@ -11,6 +11,12 @@
 .header > h1 {
   color: white;
   font-size: 4rem;
+  font-weight: bold;
+}
+
+.header > ul > a {
+  color: white;
+  font-weight: bold;
 }
 
 h2 {
