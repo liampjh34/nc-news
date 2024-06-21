@@ -52,7 +52,7 @@ export const voteForArticle = (id, numVotes) => {
 }
 
 export const postComment = (user, comment, articleId) => {
-    const path = `/articles/${articleId}/comments`
+    const path = `/articles/${articleId}/commentsdfsdfsdfsdfsdf`
     const input = {
         "username": user,
         "body": comment
