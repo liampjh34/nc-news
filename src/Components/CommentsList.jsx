@@ -17,7 +17,7 @@ export default function CommentsList({ setComments, comments, articleId, setToas
         .catch((error) => {
             setCommentsLoading(false)
         })
-    }, [articleId])
+    }, [])
 
     return <ul>
         {comments.map((comment) => {

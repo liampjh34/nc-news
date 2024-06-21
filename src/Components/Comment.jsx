@@ -20,9 +20,7 @@ export default function Comment({ comment, id, setComments, comments, setToastTo
         })
 
         deleteComment(id)
-        .then((response) => {
-            setToastToggle(true)
-        })
+        .then((response) => {})
         .catch((error) => {
             const userFacingError = {
                 message: error.message,

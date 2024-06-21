@@ -10,7 +10,7 @@ export default function CommentsView({ articleId }) {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-    }, [toastToggle])
+    }, [])
 
     return <>
         <h1>Comments</h1>

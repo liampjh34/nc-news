@@ -62,10 +62,9 @@ export default function CommentComposer({ articleId, comments, setComments, setE
         })
         .catch((error) => {
             setCommentLoading(false)
-            console.log(comments, 'comments at time of error')
             setComments((originalComments) => {
                 const newComments = originalComments.filter((originalComment) => {
-                    if (typeof originalComment.comment_id === Number) {
+                    if (typeof originalComment.comment_id === 'number') {
                         return originalComment
                     }
                 })
