@@ -52,7 +52,7 @@ export const voteForArticle = (id, numVotes) => {
 }
 
 export const postComment = (user, comment, articleId) => {
-    const path = `/articles/${articleId}/commentsrgdfgdfgdfgdfg`
+    const path = `/articles/${articleId}/comments`
     const input = {
         "username": user,
         "body": comment
@@ -60,6 +60,9 @@ export const postComment = (user, comment, articleId) => {
     return request.post(path, input)
     .then((response) => {
         return response.data
+    })
+    .catch((error) => {
+        return Promise.reject(error)
     })
 }
 
