@@ -50,8 +50,8 @@ Further instructures for testing locally can be found [here](https://vitejs.dev/
 
 ## Bugs to fix
 
-- [] If user votes for an article, they can only undo their vote and cannot then vote the other way.
-- [x] Optimistic rendering of newly posted comments is not reversed, if posting the comment errors.
+[] If user votes for an article, they can only undo their vote and cannot then vote the other way.
+[x] Optimistic rendering of newly posted comments is not reversed, if posting the comment errors.
 
 ---------
 This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
