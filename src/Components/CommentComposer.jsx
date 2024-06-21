@@ -3,26 +3,27 @@ import { postComment } from "../__utils__/api";
 import { useContext } from "react";
 import { UserContext } from "../Contexts/Contexts";
 
-export default function CommentComposer({ articleId, comments, setComments }) {
+export default function CommentComposer({ articleId, comments, setComments, setError, setToastToggle }) {
 
     const [comment, setComment] = useState('')
     const [formValid, setFormValid] = useState(false)
     const [submitAttempted, setSubmitAttempted] = useState(false)
     const [commentLoading, setCommentLoading] = useState(false)
-    const [error, setError] = useState(Error())
     const user = useContext(UserContext)
 
     useEffect(() => {
-        
     }, [formValid, submitAttempted])
 
-    const validateForm = () => {
+    const validateForm = async () => {
         if (comment.trim() === '') {
             setFormValid(false)
-            return false
+            return Promise.reject({
+                message: 'You need to write a comment',
+                status: 400
+            })
         }
         setFormValid(true)
-        return true
+        return Promise.resolve(true)
     }
 
     const handleChange = (event) => {
@@ -33,36 +34,58 @@ export default function CommentComposer({ articleId, comments, setComments }) {
         event.preventDefault()
         setCommentLoading(true)
         setSubmitAttempted(true)
-        
-        if (!validateForm()) {
-            setCommentLoading(false)
-            return
-        }
 
-        const temporaryKey = `temporaryKey${Date.now()}`
-        
-        setComments([{
-            comment_id: temporaryKey,
-            author: user,
-            body: comment,
-            votes: 0
-        }, ...comments])
-
-        setComment('')
-        
-        postComment(user, comment, articleId)
+        validateForm()
         .then((response) => {
+            const temporaryKey = `temporaryKey${Date.now()}`
+            setComments([{
+                comment_id: String(temporaryKey),
+                author: user,
+                body: comment,
+                votes: 0
+            }, ...comments])
+            setComment('')
+            return postComment(user, comment, articleId)
+        })
+        .then(({ comment }) => {
             setCommentLoading(false)
+            setComments((originalComments) => {
+                const newComments = originalComments.map((originalComment) => {
+                    if (String(originalComment.comment_id).startsWith('temporaryKey')) {
+                        return comment
+                    } else {
+                        return originalComment
+                    }
+                })
+                return newComments
+            })
         })
         .catch((error) => {
-            setError(error)
             setCommentLoading(false)
-            setComments((comments) => {
-                const originalComments = comments.filter((comment) => {
-                    return comment.comment_id !== temporaryKey
+            console.log(comments, 'comments at time of error')
+            setComments((originalComments) => {
+                const newComments = originalComments.filter((originalComment) => {
+                    if (typeof originalComment.comment_id === Number) {
+                        return originalComment
+                    }
                 })
-                return originalComments
+                return newComments
             })
+            if (error.response) {
+                const userFacingError = {
+                    message: error.response.data.msg,
+                    status: error.response.status
+                }
+                setError(userFacingError)
+                setToastToggle(true)
+            } else {
+                const userFacingError = {
+                    message: error.message,
+                    status: error.status
+                }
+                setError(userFacingError)
+                setToastToggle(true)
+            }
         })
     }
 

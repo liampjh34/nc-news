@@ -4,11 +4,13 @@ import { getArticle} from "../__utils__/api"
 import CommentsView from "./CommentsView"
 import Votes from "../Components/Votes"
 import 'animate.css'
+import { useNavigate } from "react-router-dom"
 
 export default function ArticleView() {
     const { id } = useParams()
     const [article, setArticle] = useState({})
     const [articleLoading, setArticleLoading] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         setArticleLoading(true)
@@ -16,6 +18,14 @@ export default function ArticleView() {
         .then(({article}) => {
             setArticleLoading(false)
             setArticle(article)
+        })
+        .catch((error) => {
+            const errorDetails = {
+                message: error.message,
+                status: error.response.status
+            }
+            setArticleLoading(false)
+            navigate('/error', { state: errorDetails })
         })
     }, [])
 

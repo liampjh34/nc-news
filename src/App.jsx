@@ -8,6 +8,7 @@ import ArticlesListView from './Views/ArticlesListView'
 import HomeView from './Views/HomeView'
 import ArticleView from './Views/ArticleView'
 import TopicsView from './Views/TopicsListView';
+import ErrorView from './Views/ErrorView';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/articles/:id" element={<ArticleView/>}/>
         <Route path="/topics" element={<TopicsView/>}/>
         <Route path="/topics/:slug" element={<ArticlesListView/>}/>
+        <Route path="/error" element={<ErrorView/>}/>
       </Routes>
   
   </UserContext.Provider>
