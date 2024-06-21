@@ -3,17 +3,15 @@ import { postComment } from "../__utils__/api";
 import { useContext } from "react";
 import { UserContext } from "../Contexts/Contexts";
 
-export default function CommentComposer({ articleId, comments, setComments }) {
+export default function CommentComposer({ articleId, comments, setComments, setError, setToastToggle }) {
 
     const [comment, setComment] = useState('')
     const [formValid, setFormValid] = useState(false)
     const [submitAttempted, setSubmitAttempted] = useState(false)
     const [commentLoading, setCommentLoading] = useState(false)
-    const [error, setError] = useState(Error())
     const user = useContext(UserContext)
 
     useEffect(() => {
-        
     }, [formValid, submitAttempted])
 
     const validateForm = () => {
@@ -55,7 +53,11 @@ export default function CommentComposer({ articleId, comments, setComments }) {
             setCommentLoading(false)
         })
         .catch((error) => {
-            setError(error)
+            const userFacingError = {
+                message: error.message,
+                status: error.response.status
+            }
+            setToastToggle(true)
             setCommentLoading(false)
             setComments((comments) => {
                 const originalComments = comments.filter((comment) => {
@@ -63,6 +65,7 @@ export default function CommentComposer({ articleId, comments, setComments }) {
                 })
                 return originalComments
             })
+            setError(userFacingError)
         })
     }
 

@@ -3,7 +3,7 @@ import Comment from "./Comment"
 import { getArticleComments } from "../__utils__/api"
 
 
-export default function CommentsList({ setComments, comments, articleId }) {
+export default function CommentsList({ setComments, comments, articleId, setToastToggle, setError }) {
 
     const [commentsLoading, setCommentsLoading] = useState(false)
 
@@ -15,14 +15,20 @@ export default function CommentsList({ setComments, comments, articleId }) {
             setComments(response)
         })
         .catch((error) => {
-            console.log(error)
+            setCommentsLoading(false)
         })
-    }, [])
+    }, [articleId])
 
     return <ul>
         {comments.map((comment) => {
            return <li key={comment.comment_id}>
-               <Comment comment={comment} id={comment.comment_id}/>
+               <Comment 
+                comment={comment} 
+                id={comment.comment_id} 
+                comments={comments} 
+                setComments={setComments}
+                setToastToggle={setToastToggle}
+                setError={setError}/>
            </li> 
         })}
     </ul>

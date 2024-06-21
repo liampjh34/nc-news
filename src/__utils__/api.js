@@ -16,25 +16,20 @@ export const getArticles = (topic=undefined, params) => {
             return response.data.articles
         })
         .catch((error) => {
-            console.log(error)
+            return Promise.reject(error)
         })
 }
 
-export const getArticlesByTopic = (slug) => {
-    const path = `/articles/?topic=${slug}`
-    return request.get(path)
-    .then((response) => {
-        return response.data
-    })
-}
 export const getArticle = (id) => {
     const path = `/articles/${id}`
     return request.get(path)
     .then((response) => {
         return response.data
     })
+    .catch((error) => {
+        return Promise.reject(error)
+    })
 }
-
 
 export const getArticleComments = (id) => {
     const path = `/articles/${id}/comments`
@@ -57,7 +52,7 @@ export const voteForArticle = (id, numVotes) => {
 }
 
 export const postComment = (user, comment, articleId) => {
-    const path = `/articles/${articleId}/comments`
+    const path = `/articles/${articleId}/commentsrgdfgdfgdfgdfg`
     const input = {
         "username": user,
         "body": comment
@@ -74,6 +69,9 @@ export const deleteComment = (commentId) => {
     .then((response) => {
         return response.data
     })
+    .catch((error) => {
+        return Promise.reject(error)
+    })
 }
 
 export const getTopics = () => {
@@ -81,5 +79,8 @@ export const getTopics = () => {
     return request.get(path)
     .then((response) => {
         return response.data
+    })
+    .catch((error) => {
+        return Promise.reject(error)
     })
 }

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { getTopics } from "../__utils__/api"
 import TopicsList from "../Components/TopicsList"
+import { useNavigate } from "react-router-dom"
 
 export default function TopicsListView() {
 
+    const navigate = useNavigate()
     const [topics, setTopics] = useState([])
     const [topicsLoading, setTopicsLoading] = useState(false)
-    const [error, setError] = useState(null)
 
     useEffect(() => {
         setTopicsLoading(true)
@@ -16,8 +17,12 @@ export default function TopicsListView() {
             setTopics(topics)
         })
         .catch((error) => {
+            const errorDetails = {
+                message: error.message,
+                status: error.response.status
+            }
             setTopicsLoading(false)
-            setError({ error })
+            navigate('/error', { state: errorDetails })
         })
     }, [])
 
