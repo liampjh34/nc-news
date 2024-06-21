@@ -1,3 +1,11 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+.bg-body-tertiary {
+    background-color: #7DA9C2 !important;
+}
 
+.navbar-brand {
+    color: white;
+    font-weight: bolder;
+    font-size: 4rem;
+}
