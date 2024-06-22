@@ -1,11 +1,18 @@
+$primary: #2E9CDB;
+$secondary: #77C9C8;
+$dark: #241B25;
+$light: white;
+$success: #89D8A5;
+$info: #F9F2C9;
+$warning: #E68565;
+$danger: #CC3A51;
+
+$navbar-light-color: white;
+$navbar-light-brand-color: white;
+$navbar-brand-font-size: 3.5rem;
+
+$nav-link-font-weight: bold;
+
+$border-width: 2px;
+
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
-
-.bg-body-tertiary {
-    background-color: #7DA9C2 !important;
-}
-
-.navbar-brand {
-    color: white;
-    font-weight: bolder;
-    font-size: 4rem;
-}

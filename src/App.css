@@ -8,17 +8,6 @@
   width: auto;
 }
 
-.header > h1 {
-  color: white;
-  font-size: 4rem;
-  font-weight: bold;
-}
-
-.header > ul > a {
-  color: white;
-  font-weight: bold;
-}
-
 h2 {
   font-size: 2.5rem;
 }
@@ -57,10 +46,6 @@ p {
 
 li {
   list-style-type: none;
-}
-
-.header {
-  background-color: #7DA9C2;
 }
 
 .comment {
@@ -107,11 +92,6 @@ li {
   font-weight: bold;
 }
 
-.nav-linked {
+#navbar-brand {
   font-weight: bold;
-}
-
-#header {
-  border: 1px solid black;
-  background-color: black;
 }

@@ -7,11 +7,11 @@ export default function Header() {
     return <Navbar 
         collapseOnSelect 
         expand="lg" 
-        className="bg-body-tertiary"
-        data-bs-theme='blue'
+        data-bs-theme="light"
+        bg="primary"
         id="header">
         <Container>
-            <Navbar.Brand href='/'>big news.</Navbar.Brand>
+            <Navbar.Brand id="navbar-brand" href='/'>big news.</Navbar.Brand>
             <Navbar.Toggle aria-controls='responsive-navbar-nav'/>
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className='me-auto'>
