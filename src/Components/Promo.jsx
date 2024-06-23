@@ -11,7 +11,7 @@ export default function Promo({ id, title, img, timestamp, comments, votes }) {
 
     const path = `/articles/${id}`
     
-    return <Link to={path}>
+    return <Link to={path} id='card-container'>
             <Card style={{width: '18rem'}}>
             <Card.Img variant='top' src={img}/>
             <Card.Body>
