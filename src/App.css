@@ -95,3 +95,24 @@ li {
 #navbar-brand {
   font-weight: bold;
 }
+
+#list-header-container {
+  border: 1px solid black;
+}
+
+#list-filter {
+  display: block;
+  border: 1px solid hotpink;
+}
+
+#list-header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid red;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bolder;
+}
