@@ -1,0 +1,31 @@
+$primary: #2E9CDB;
+$secondary: #77C9C8;
+$dark: #241B25;
+$light: white;
+$success: #89D8A5;
+$info: #F9F2C9;
+$warning: #E68565;
+$danger: #CC3A51;
+
+//navbar styling
+
+//text
+$navbar-light-color: white;
+$navbar-light-brand-color: white;
+$navbar-brand-font-size: 3.5rem;
+$nav-link-font-weight: bold;
+
+//hovers
+$navbar-light-hover-color: #e6eff5;
+$navbar-light-brand-hover-color: #e6eff5;
+
+//hamburger
+$navbar-toggler-border-radius: 5px;
+$navbar-toggler-focus-width: 1px;
+$border-width: 1px;
+
+.navbar-toggler-icon {
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
