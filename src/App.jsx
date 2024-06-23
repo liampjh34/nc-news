@@ -18,7 +18,7 @@ function App() {
   return (<UserContext.Provider value={user}>
       <Header/>
       <Routes>
-        <Route path="/" element={<HomeView />}/>
+        <Route path="/" element={<ArticlesListView />}/>
         <Route path="/articles" element={<ArticlesListView />}/>
         <Route path="/articles/:id" element={<ArticleView/>}/>
         <Route path="/topics" element={<TopicsView/>}/>

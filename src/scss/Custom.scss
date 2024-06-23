@@ -28,4 +28,57 @@ $border-width: 1px;
     --bs-navbar-toggler-icon-bg: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
+@import 'node_modules/bootstrap/scss/mixins';
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+
+#list-filter {
+  display: block;
+}
+
+#list-header {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 7vw;
+  margin-right: 7vw;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+#list-header > h2, button {
+    font-weight: bolder;
+}
+
+
+#list-header > button {
+    font-weight: bolder;
+    color: black;
+}
+
+// #list-header-date {
+//     border: 2px solid black;
+//     padding-left: var(--bs-gutter-x);
+//     padding-right: var(--bs-gutter-x); 
+
+//   @include media-breakpoint-up(sm) {
+//     padding-left: var(--bs-gutter-x-sm);
+//     padding-right: var(--bs-gutter-x-sm); 
+//   }
+
+//   @include media-breakpoint-up(md) {
+//     padding-left: var(--bs-gutter-x-m); // Default margin
+//     padding-right: var(--bs-gutter-x-m); 
+//   }
+
+//   @include media-breakpoint-up(lg) {
+//     padding-left: var(--bs-gutter-x-lg); // Default margin
+//     padding-right: var(--bs-gutter-x-lg); 
+//   }
+
+//   @include media-breakpoint-up(xl) {
+//     padding-left: var(--bs-gutter-x-xl); // Default margin
+//     padding-right: var(--bs-gutter-x-xl); 
+//   }
+// }
+
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";

@@ -32,9 +32,16 @@ p {
   font-size: 1rem;
 }
 
+#promo-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: center;
+}
+
 .promo {
-  width: auto;
-  border: 1px solid black;
+  max-width: auto;
+  align-items: stretch;
   margin: 2vh 2vw 2vh 2vw;
 }
 
@@ -42,6 +49,10 @@ p {
   padding: 1vh 5vw 1vh 5vw;
   margin: 1vh 0vw 1vh 0vw;
   max-width: 90%;
+}
+
+#card-container {
+  align-self: center;
 }
 
 li {
@@ -95,3 +106,23 @@ li {
 #navbar-brand {
   font-weight: bold;
 }
+
+/* #list-header-container {
+  border: 1px solid black;
+}
+
+#list-filter {
+  display: block;
+  border: 1px solid hotpink;
+}
+
+#list-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bolder;
+} */

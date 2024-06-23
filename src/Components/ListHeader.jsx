@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useSearchParams } from "react-router-dom"
+import { Button } from "react-bootstrap"
 
 export default function ListHeader({ setParams }) {
     const [filterToggled, setFilterToggled] = useState(false)
@@ -48,9 +49,11 @@ export default function ListHeader({ setParams }) {
     
     const todaysDate = new Date().toLocaleDateString(undefined, dateConfig)
 
-    return <>    
-        <h2>{todaysDate}</h2>
-        <button onClick={handleSortClick}>Filter</button>
-        <FilterControls/>
-    </>
+    return <div id='list-header-container'>
+        <div id='list-header'>
+            <h2 id='list-header-date' className='me-auto'>{todaysDate}</h2>
+            <Button variant="secondary" onClick={handleSortClick}>Filter</Button>
+        </div>
+        <FilterControls/>   
+    </div>
 }
