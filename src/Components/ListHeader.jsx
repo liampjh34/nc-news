@@ -51,7 +51,7 @@ export default function ListHeader({ setParams }) {
 
     return <div id='list-header-container'>
         <div id='list-header'>
-            <h2 class='list-header'>{todaysDate}</h2>
+            <h2 id='list-header-date' className='me-auto'>{todaysDate}</h2>
             <Button variant="secondary" onClick={handleSortClick}>Filter</Button>
         </div>
         <FilterControls/>   

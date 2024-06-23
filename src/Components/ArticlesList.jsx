@@ -1,7 +1,7 @@
 import Promo from "./Promo"
 
 export default function ArticlesList({ articles }) {
-    return <ul>
+    return <ul id='promo-container'>
         {articles.map((article) => {
             return <li className='promo' key={article.article_id}>
                 <Promo 
