@@ -107,6 +107,10 @@ li {
   font-weight: bold;
 }
 
+.article {
+  padding: 2vh 2vw 2vh 5vw;
+}
+
 /* #list-header-container {
   border: 1px solid black;
 }
@@ -126,3 +130,9 @@ li {
   justify-content: space-between;
   font-weight: bolder;
 } */
+
+@media only screen and (min-width: 768px) {
+  .article {
+    padding: 2vh 20vw 5vh 5vw;
+  }
+}

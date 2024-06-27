@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function ArticleView() {
     const { id } = useParams()
-    const [article, setArticle] = useState({})
+    const [article, setArticle] = useState(null)
     const [articleLoading, setArticleLoading] = useState(false)
     const navigate = useNavigate()
 
@@ -29,7 +29,15 @@ export default function ArticleView() {
         })
     }, [])
 
-    return <>
+    if (articleLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!article) {
+        return null; // Return null or a loading state if article is not loaded
+    }
+
+    return <div className='article'>
         <h1>{article.title}</h1>
         <h6>by {article.author}</h6>
         <img 
@@ -40,5 +48,5 @@ export default function ArticleView() {
         <article>{article.body}</article>
         <Votes id={id} passedVotes={article.votes}/>
         <CommentsView articleId={id}/>
-    </>
+    </div>
 }

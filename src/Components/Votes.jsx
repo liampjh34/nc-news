@@ -5,65 +5,45 @@ import { voteForArticle } from "../__utils__/api";
 
 export default function Votes({ id, passedVotes }) {
 
+    console.log(passedVotes, 'votes')
+
     const [userVoted, setUserVoted] = useState(false)
-    const [userAction, setUserAction] = useState('')
     const [votesLoading, setVotesLoading] = useState(false)
     const [error, setError] = useState(Error())
-    const [votes, setVotes] = useState(0)
-
+    const [votes, setVotes] = useState(passedVotes)
+    
     useEffect(() => {
-        
-    }, [votes])
+        console.log(votesLoading, 'loading');
+        console.log(votes, 'votes from use Effect');
+    }, [votes, votesLoading]);
 
-    const addVote = (event) => {
+    const handleVote = async (event) => {
         setVotesLoading(true)
-        setUserVoted(true)
-        setUserAction('add')
-        setVotes((votes) => {
-            {return votes === 0 ? passedVotes + 1 : votes + 1}
-        })
-        voteForArticle(id, 1)
-        .then((response) => {})
-        .catch((error) => {
-            setError(error)
-            setVotes(passedVotes)
-        })
-    }
 
-    const minusVote = (event) => {
-        setVotesLoading(true)
-        setUserVoted(true)
-        setUserAction('minus')
-        setVotes((votes) => {
-            {return votes === 0 ? passedVotes - 1 : votes - 1}
-        })
-        voteForArticle(id, -1)
-        .then((response) => {})
-        .catch((error) => {
-            setError(error)
-            setVotes(passedVotes)
-        })
+        try {
+            if (userVoted) {
+                await voteForArticle(id, -1);
+                setVotes(votes - 1)
+            } else {
+                await voteForArticle(id, 1);
+                setVotes(votes + 1)
+            }
+            setUserVoted(!userVoted);
+        } catch (error) {
+            setError(error);
+            setVotes(passedVotes);
+        } finally {
+            setVotesLoading(false);
+        }
+
     }
 
     return <div>
-        <p>Like this article? Support the author!</p>
-        <Button 
-            variant='outline-danger' 
-            aria-label="minus 1 like"
-            onClick={minusVote}
-            disabled={userAction === 'minus' ? true : false}
-        >-</Button>
-        <Heart 
+        <button
             aria-hidden="true"
-            userVoted={userVoted}
-            userAction={userAction}/>
-        <Button 
-            variant='outline-success' 
-            aria-label="plus 1 like"
-            onClick={addVote}
-            disabled={userAction === 'add' ? true : false}
-        >+</Button>
-
-        <p>{userVoted ? votes : passedVotes} votes</p>
+            onClick={handleVote}>
+            <Heart userVoted={userVoted}/>
+        </button>
+        <p>{votes}</p>
     </div>
 }
