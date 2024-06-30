@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../Contexts/Contexts"
 import { deleteComment } from "../__utils__/api"
+import { Avatar } from "@mui/material"
 
 export default function Comment({ comment, id, setComments, comments, setToastToggle, setError }) {
 
@@ -34,7 +35,8 @@ export default function Comment({ comment, id, setComments, comments, setToastTo
         })
     }
 
-        return <div className='comment'>
+        return <div className='comment-container'>
+            <Avatar>{comment.author[0].toUpperCase()}</Avatar>
             <p>{comment.author}</p>
             <p>{comment.body}</p>
             <p>Votes: {comment.votes}</p>
