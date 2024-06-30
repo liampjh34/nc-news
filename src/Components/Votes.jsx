@@ -38,11 +38,13 @@ export default function Votes({ id, passedVotes }) {
 
     }
 
-    return <div>
+    return <div className='like-button-container'>
         <button
             aria-hidden="true"
-            onClick={handleVote}>
-            <Heart userVoted={userVoted}/>
+            onClick={handleVote}
+            className='like-button'>
+            <Heart 
+                userVoted={userVoted}/>
         </button>
         <p>{votes}</p>
     </div>

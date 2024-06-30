@@ -1,6 +1,6 @@
 * {
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -37,6 +37,7 @@ p {
   flex-wrap: wrap;
   justify-content: center; 
   align-items: center;
+  padding: 0px;
 }
 
 .promo {
@@ -57,6 +58,43 @@ p {
 
 li {
   list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+ul {
+  padding: 0 0 0 0;
+}
+
+.article ul {
+  padding: 0 0 0 0; 
+}
+
+.article form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.article label {
+  grid-area: 1 / 1 / 2 / 4; 
+}
+
+.article input {
+  grid-area: 2 / 1 / 3 / 3;
+  width: auto;
+}
+
+.article button {
+  width: auto;
+  grid-area: 2 / 3 / 3 / 4; 
+}
+
+#comments-list {
+  padding: 0;
 }
 
 .comment {
@@ -64,8 +102,10 @@ li {
   border-top: 1px solid #7D87C2;
 }
 
-#articleHeroImage {
+.article-image {
   max-width: 90vw;
+  margin: 1vh 0vw 1vh 0vw;
+
 }
 
 .votesHeart {
@@ -78,7 +118,7 @@ li {
   background-color: #7D87C2;
   color: white;
   padding: 1vh 1vw 1vh 1vw;
-  margin: 1vh 1vw 1vh 1vw;
+  margin: 1vh 2vw 1vh 2vw;
   font-weight: bold;
 }
 
@@ -95,12 +135,15 @@ li {
 
 .topic-card {
   border: 1px solid black;
+  border-radius: 15px;
   max-width: 40vw;
   padding: 1vh 1vw 1vh 1vw;
   margin: 1vh 1vw 1vh 1vw;
   background-color: #7DC2B9;
   color: white;
   font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #navbar-brand {
@@ -108,7 +151,19 @@ li {
 }
 
 .article {
-  padding: 2vh 2vw 2vh 5vw;
+  padding: 2vh 5vw 2vh 5vw;
+}
+
+.article-header {
+  padding-bottom: 1vh;
+}
+
+.like-button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.like-button-container {
 }
 
 /* #list-header-container {

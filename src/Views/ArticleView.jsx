@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom"
 import { getArticle} from "../__utils__/api"
 import CommentsView from "./CommentsView"
 import Votes from "../Components/Votes"
+import ArticleHeader from "../Components/ArticleHeader"
 import 'animate.css'
 import { useNavigate } from "react-router-dom"
+import TopicCard from "../Components/TopicCard";
 
 export default function ArticleView() {
     const { id } = useParams()
@@ -38,15 +40,15 @@ export default function ArticleView() {
     }
 
     return <div className='article'>
-        <h1>{article.title}</h1>
-        <h6>by {article.author}</h6>
+        <ArticleHeader title={article.title} author={article.author}/>
         <img 
             src={article.article_img_url} 
-            alt='promo image'
-            id="articleHeroImage"></img>
-        <div>{article.topic}</div>
+            alt='promo-image'
+            className="article-image"></img>
         <article>{article.body}</article>
         <Votes id={id} passedVotes={article.votes}/>
+        <TopicCard
+            topic={article.topic}/>
         <CommentsView articleId={id}/>
     </div>
 }
