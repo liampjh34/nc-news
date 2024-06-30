@@ -3,12 +3,14 @@ import { useParams } from "react-router-dom"
 import { getArticle} from "../__utils__/api"
 import CommentsView from "./CommentsView"
 import Votes from "../Components/Votes"
+import ArticleHeader from "../Components/ArticleHeader"
 import 'animate.css'
 import { useNavigate } from "react-router-dom"
+import TopicCard from "../Components/TopicCard";
 
 export default function ArticleView() {
     const { id } = useParams()
-    const [article, setArticle] = useState({})
+    const [article, setArticle] = useState(null)
     const [articleLoading, setArticleLoading] = useState(false)
     const navigate = useNavigate()
 
@@ -29,16 +31,24 @@ export default function ArticleView() {
         })
     }, [])
 
-    return <>
-        <h1>{article.title}</h1>
-        <h6>by {article.author}</h6>
+    if (articleLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!article) {
+        return null; // Return null or a loading state if article is not loaded
+    }
+
+    return <div className='article'>
+        <ArticleHeader title={article.title} author={article.author}/>
         <img 
             src={article.article_img_url} 
-            alt='promo image'
-            id="articleHeroImage"></img>
-        <div>{article.topic}</div>
+            alt='promo-image'
+            className="article-image"></img>
         <article>{article.body}</article>
         <Votes id={id} passedVotes={article.votes}/>
+        <TopicCard
+            topic={article.topic}/>
         <CommentsView articleId={id}/>
-    </>
+    </div>
 }
