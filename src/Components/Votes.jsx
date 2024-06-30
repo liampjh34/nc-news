@@ -46,6 +46,6 @@ export default function Votes({ id, passedVotes }) {
             <Heart 
                 userVoted={userVoted}/>
         </button>
-        <p>{votes}</p>
+        <p id='like-button-votes'>{votes}</p>
     </div>
 }

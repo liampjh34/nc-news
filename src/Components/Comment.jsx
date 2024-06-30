@@ -36,12 +36,15 @@ export default function Comment({ comment, id, setComments, comments, setToastTo
     }
 
         return <div className='comment-container'>
-            <Avatar>{comment.author[0].toUpperCase()}</Avatar>
-            <p>{comment.author}</p>
-            <p>{comment.body}</p>
-            <p>Votes: {comment.votes}</p>
+            <Avatar className='avatar'>{comment.author[0].toUpperCase()}</Avatar>
+            <div className='comment-body'>
+                <p className='comment-username'>{comment.author}</p>
+                <p className='comment'>{comment.body}</p>
+            </div>
+
+            <p className='comment-votes'>{comment.votes} votes</p>
             {comment.author === user ? <button 
-            className='delete-button'
+            className='comment-delete-button'
             onClick={handleClick}>Delete</button> : null}
         </div>
 }

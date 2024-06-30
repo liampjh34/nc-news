@@ -46,9 +46,14 @@ export default function ArticleView() {
             alt='promo-image'
             className="article-image"></img>
         <article>{article.body}</article>
-        <Votes id={id} passedVotes={article.votes}/>
-        <TopicCard
-            topic={article.topic}/>
+        <div id='article-footer'>
+            <Votes id={id} passedVotes={article.votes}/>
+            <div id='article-topic-card'>
+                <TopicCard
+                    topic={article.topic}/>
+                    <p>see more</p>
+            </div>
+        </div>
         <CommentsView articleId={id}/>
     </div>
 }
