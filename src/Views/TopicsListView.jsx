@@ -26,7 +26,7 @@ export default function TopicsListView() {
         })
     }, [])
 
-    return <>
-    <TopicsList topics={topics}/>
-    </>
+    return <div id='topics-list'>
+        <TopicsList topics={topics}/>
+    </div>
 }

@@ -10,7 +10,7 @@ export default function ErrorToast({ error, toastToggle, setToastToggle, setErro
             autohide='true'
             animation='true'
             variant='error'
-            delay='3000'
+            delay='7000'
             onClose={() => {setToastToggle(false)}}
             show={toastToggle}
             bg='danger'>

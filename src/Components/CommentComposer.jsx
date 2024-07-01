@@ -98,7 +98,6 @@ export default function CommentComposer({ articleId, comments, setComments, setE
             value={comment} 
             onChange={handleChange}
             className={!formValid && submitAttempted ? 'invalidInput' : ''}></input>
-        {!formValid && submitAttempted && <p>You need to write a comment</p>}
         <button className='postCommentButton' type='submit' onClick={handleSubmit}>Post</button>
     </form>
 }
